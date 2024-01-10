@@ -1,0 +1,150 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/nomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/nomeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite o nome" />
+
+    <TextView
+        android:id="@+id/sobrenomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sobrenome:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/sobrenomeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite o sobrenome" />
+
+    <TextView
+        android:id="@+id/generoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gênero:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/generoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite o gênero" />
+
+    <TextView
+        android:id="@+id/idadeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Idade:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/idadeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="Digite a idade" />
+
+    <TextView
+        android:id="@+id/alturaTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Altura:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/alturaEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Digite a altura" />
+
+    <TextView
+        android:id="@+id/pesoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Peso:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/pesoEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:hint="Digite o peso" />
+
+    <TextView
+        android:id="@+id/emailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/emailEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:hint="Digite o email" />
+
+    <TextView
+        android:id="@+id/cidadeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cidade:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/cidadeEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite a cidade" />
+
+    <TextView
+        android:id="@+id/telefoneTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Telefone:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/telefoneEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:hint="Digite o telefone" />
+
+    <TextView
+        android:id="@+id/esportePrincipalTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esporte Principal:"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/esportePrincipalEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite o esporte principal" />
+
+    <Button
+        android:id="@+id/okButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ok" />
+
+</LinearLayout>

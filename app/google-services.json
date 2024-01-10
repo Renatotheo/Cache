@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1039714267143",
+    "project_id": "cache-8c2d8",
+    "storage_bucket": "cache-8c2d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039714267143:android:f43f5cac385a7691127aa2",
+        "android_client_info": {
+          "package_name": "com.example.cache"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnH-JUUc5NSf1dBZ1yifEwymCRh3sm_o8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
