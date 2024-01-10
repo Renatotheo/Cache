@@ -2,19 +2,17 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
-    kotlin("android")
-    kotlin("kapt")
-
+    id("com.google.devtools.ksp")
 }
 
 android {
     namespace = "com.example.cache"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.cache"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -37,9 +35,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
     buildFeatures {
         compose = true
     }
@@ -51,11 +51,18 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+}
+
+kotlin {
+    jvmToolchain {
+        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
+    }
 }
 
 dependencies {
 
-    val room_version = "2.6.1"
+    val room_version = "2.5.0"
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.2")
@@ -67,13 +74,16 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
-    implementation("androidx.appcompat:appcompat:1.4.1")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.5.31")
-    implementation ("com.google.firebase:firebase-firestore:24.10.0")
-    implementation ("com.google.firebase:firebase-core:22.0.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.20")
 
-    kapt("androidx.room:room-compiler:$room_version")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.0.0")
+    implementation ("com.google.firebase:firebase-core:21.0.0")
+
     implementation("androidx.room:room-runtime:$room_version")
+    ksp("androidx.room:room-compiler:2.6.1")
+
+
 
 
 

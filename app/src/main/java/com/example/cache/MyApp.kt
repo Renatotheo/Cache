@@ -1,6 +1,7 @@
 package com.example.cache
 
 import android.app.Application
+import androidx.room.Room
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 

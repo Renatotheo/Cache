@@ -3,6 +3,7 @@ package com.example.cache
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -13,9 +14,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.room.Room
 import com.example.cache.ui.theme.CacheTheme
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-// MainActivity.kt
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var userRepository: UserRepository
@@ -29,7 +36,7 @@ class MainActivity : AppCompatActivity() {
             AppDatabase::class.java, "app_database"
         ).build()
 
-        userRepository = UserRepository(MyApp.database.userDao())
+        userRepository = UserRepository(MyApp.database.userDao(), FirebaseFirestore.getInstance())
 
         val cache = getSharedPreferences("cache", MODE_PRIVATE)
         val isFirstTime = cache.getBoolean("isFirstTime", true)
@@ -41,12 +48,25 @@ class MainActivity : AppCompatActivity() {
                 if (initialUserData.isEmpty()) {
                     // O banco de dados está vazio, você pode realizar ações iniciais aqui
                     // Por exemplo, inserir dados de amostra
-                    val sampleUser = User("John", "Doe", "Masculino", 25, 175.0, 70.0, "john.doe@example.com", "Cidade Exemplo", "123456789", "Futebol")
+                    val sampleUser = User(
+                        id = 0,
+                        nome = "John",
+                        sobrenome = "Doe",
+                        genero = "Masculino",
+                        idade = 25,
+                        altura = 175.0,
+                        peso = 70.0,
+                        email = "john.doe@example.com",
+                        cidade = "Cidade Exemplo",
+                        telefone = "123456789",
+                        esportePrincipal = "Futebol"
+                    )
                     userRepository.insert(sampleUser)
                 }
 
-            // Atualiza o cache
-            cache.edit().putBoolean("isFirstTime", false).apply()
+                // Atualiza o cache
+                cache.edit().putBoolean("isFirstTime", false).apply()
+            }
         }
 
         val okButton = findViewById<Button>(R.id.okButton)
@@ -76,13 +96,26 @@ class MainActivity : AppCompatActivity() {
                 cidade = cidade,
                 telefone = telefone,
                 esportePrincipal = esportePrincipal
-            ) CoroutineScope(Dispatchers.IO).launch {
+            )
+            CoroutineScope(Dispatchers.IO).launch {
                 userRepository.insert(user)
-            }
 
             // Atualize a interface do usuário com os dados inseridos
-            // ...
+                withContext(Dispatchers.Main) {
+                    // Atualize os TextViews correspondentes
+                    findViewById<TextView>(R.id.nomeTitle).text = "Nome: $nome"
+                    findViewById<TextView>(R.id.sobrenomeTitle).text = "Sobrenome: $sobrenome"
+                    findViewById<TextView>(R.id.generoTitle).text = "Gênero: $genero"
+                    findViewById<TextView>(R.id.idadeTitle).text = "Idade: $idade"
+                    findViewById<TextView>(R.id.alturaTitle).text = "Altura: $altura"
+                    findViewById<TextView>(R.id.pesoTitle).text = "Peso: $peso"
+                    findViewById<TextView>(R.id.emailTitle).text = "Email: $email"
+                    findViewById<TextView>(R.id.cidadeTitle).text = "Cidade: $cidade"
+                    findViewById<TextView>(R.id.telefoneTitle).text = "Telefone: $telefone"
+                    findViewById<TextView>(R.id.esportePrincipalTitle).text = "Esporte Principal: $esportePrincipal"
+                }
         }
     }
+    }
 }
-}
+
